@@ -13,20 +13,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var addDataButton: UIButton!
     @IBOutlet weak var chosenDateLabel: UILabel!
     @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var dataInput: UITextField!
+    @IBOutlet weak var timeInput: UILabel!
     var date: Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dataInput.keyboardType = UIKeyboardType.numberPad
         inputLabel.text = "Blood Sugar"
+        
         date = Date()
         updateDateText()
+        
+        setTimeFormat()
         segmentedControl.addTarget(self, action:
                         #selector(ViewController.dataTypeChanged(sender:)), for: .valueChanged)
         
     }
 
     @IBAction func dataTypeChanged(sender: UISegmentedControl?) {
-        print("lskdjaflsk")
+        
         if sender?.selectedSegmentIndex == 0 {
             inputLabel.text = "Blood Sugar:"
             addDataButton.setTitle("Add Blood Sugar", for: .normal)
@@ -64,6 +70,16 @@ class ViewController: UIViewController {
         chosenDateLabel.text = dateString
         
     }
+    
+    func setTimeFormat() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        formatter.amSymbol = "AM"
+        formatter.pmSymbol = "PM"
 
+        let timeString = formatter.string(from: date)
+        timeInput.text = timeString
+        
+    }
 }
 
