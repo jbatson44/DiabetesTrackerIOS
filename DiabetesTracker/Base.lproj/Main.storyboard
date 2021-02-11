@@ -98,6 +98,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IOu-F5-krn">
+                                <rect key="frame" x="235" y="251" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -109,6 +115,7 @@
                         <outlet property="inputLabel" destination="ecS-Jp-4M9" id="oX5-Ga-XQa"/>
                         <outlet property="segmentedControl" destination="yZF-rS-iHK" id="sYn-zN-ql4"/>
                         <outlet property="timeInput" destination="Sql-gh-8J6" id="87V-nd-OKu"/>
+                        <outlet property="txtDatePicker" destination="IOu-F5-krn" id="932-Hn-HZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeInput: UILabel!
     var date: Date!
     
+    @IBOutlet weak var txtDatePicker: UITextField!
+      let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataInput.keyboardType = UIKeyboardType.numberPad
@@ -28,6 +31,8 @@ class ViewController: UIViewController {
         setTimeFormat()
         segmentedControl.addTarget(self, action:
                         #selector(ViewController.dataTypeChanged(sender:)), for: .valueChanged)
+        
+        showDatePicker()
         
     }
 
@@ -81,5 +86,35 @@ class ViewController: UIViewController {
         timeInput.text = timeString
         
     }
-}
+    
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .time
+
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+        txtDatePicker.inputAccessoryView = toolbar
+        txtDatePicker.inputView = datePicker
+
+    }
+
+     @objc func donedatePicker(){
+
+      let formatter = DateFormatter()
+      formatter.dateFormat = "h:mm a"
+      txtDatePicker.text = formatter.string(from: datePicker.date)
+      self.view.endEditing(true)
+    }
+
+    @objc func cancelDatePicker(){
+       self.view.endEditing(true)
+     }}
 
